@@ -14,4 +14,15 @@ public class PlateauTest {
         assertEquals(10, plateau.verticalBoundary);
 
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotCreatePlateauWithoutHorizontalBoundary() throws Exception {
+        Plateau plateau = new Plateau(0, 10);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotCreatePlateauWithoutVerticalBoundary() throws Exception {
+        Plateau plateau = new Plateau(10, 0);
+    }
 }
