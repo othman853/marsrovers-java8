@@ -3,7 +3,7 @@ package location;
 import java.util.ArrayList;
 import java.util.List;
 
-class Plateau {
+public class Plateau {
 
     final int horizontalBoundary;
     final int verticalBoundary;
@@ -23,11 +23,11 @@ class Plateau {
         this.verticalBoundary = verticalBoundary;
     }
 
-    void add(Position position) {
+    public void add(Position position) {
         occupiedPositions.add(position);
     }
 
-    boolean isOccupied(final Position position) {
+    public boolean isOccupied(final Position position) {
         return occupiedPositions
                 .stream()
                 .anyMatch(occupiedPosition -> occupiedPosition.x == position.x && occupiedPosition.y == position.y);
