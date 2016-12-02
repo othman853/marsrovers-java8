@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static location.Orientation.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class OrientationTest {
 
@@ -20,9 +22,29 @@ public class OrientationTest {
     }
 
     @Test
+    public void northShouldBeVertical() throws Exception {
+        assertTrue(NORTH.isVertical());
+    }
+
+    @Test
+    public void northShouldMoveUp() throws Exception {
+        assertEquals(1, NORTH.move());
+    }
+
+    @Test
     public void eastShouldHaveProperRightAndLeftOrientations() throws Exception {
         assertEquals(NORTH, EAST.left());
         assertEquals(SOUTH, EAST.right());
+    }
+
+    @Test
+    public void eastShouldBeHorizontal() throws Exception {
+        assertFalse(EAST.isVertical());
+    }
+
+    @Test
+    public void eastShouldMoveRight() throws Exception {
+        assertEquals(1, EAST.move());
     }
 
     @Test
@@ -37,6 +59,16 @@ public class OrientationTest {
     }
 
     @Test
+    public void southShouldBeVertical() throws Exception {
+        assertTrue(SOUTH.isVertical());
+    }
+
+    @Test
+    public void southShouldGoDown() throws Exception {
+        assertEquals(-1, SOUTH.move());
+    }
+
+    @Test
     public void southShouldHaveProperStringRepresentation() throws Exception {
         assertEquals("S", SOUTH.toString());
     }
@@ -45,6 +77,16 @@ public class OrientationTest {
     public void westShouldHaveProperRightAndLeftOrientations() throws Exception {
         assertEquals(SOUTH, WEST.left());
         assertEquals(NORTH, WEST.right());
+    }
+
+    @Test
+    public void westShouldBeHorizontal() throws Exception {
+        assertFalse(WEST.isVertical());
+    }
+
+    @Test
+    public void westShouldMoveLeft() throws Exception {
+        assertEquals(-1, WEST.move());
     }
 
     @Test
