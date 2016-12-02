@@ -12,7 +12,7 @@ public class PositionTest {
 
         Position position = new Position(2,2);
 
-        Position movedPosition = position.right();
+        Position movedPosition = position.moveX(+1);
 
         assertEquals(3, movedPosition.x);
 
@@ -23,7 +23,7 @@ public class PositionTest {
 
         Position position = new Position(2,2);
 
-        Position movedPosition = position.left();
+        Position movedPosition = position.moveX(-1);
 
         assertEquals(1, movedPosition.x);
 
@@ -34,7 +34,7 @@ public class PositionTest {
 
         Position position = new Position(2,2);
 
-        Position movedPosition = position.up();
+        Position movedPosition = position.moveY(+1);
 
         assertEquals(3, movedPosition.y);
 
@@ -45,7 +45,7 @@ public class PositionTest {
 
         Position position = new Position(2,2);
 
-        Position movedPosition = position.down();
+        Position movedPosition = position.moveY(-1);
 
         assertEquals(1, movedPosition.y);
 
