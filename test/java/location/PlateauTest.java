@@ -55,6 +55,8 @@ public class PlateauTest {
     public void shouldAInformThatThePositionIsFreeInAnEmptyPositionsList() throws Exception {
         Plateau plateau = new Plateau(10, 10);
 
-        assertFalse(plateau.isOccupied(new Position(2,2)));
+        boolean actualResponse = plateau.isOccupied(new Position(2,2));
+
+        assertFalse(actualResponse);
     }
 }
