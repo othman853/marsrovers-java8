@@ -35,17 +35,17 @@ public class PlateauTest {
     @Test
     public void shouldAddNewPositionToOccupiedPositions() throws Exception {
 
-        Rover rover = new Rover(new Location(Orientation.NORTH, new Position(1,1)));
+        Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Plateau plateau = new Plateau(10, 10);
 
         plateau.add(rover);
 
-        assertTrue(plateau.isOccupied(rover.location.position));
+        assertTrue(plateau.isOccupied(rover.position));
     }
 
     @Test
     public void shouldAInformThatThePositionIsFree() throws Exception {
-        Rover rover = new Rover(new Location(Orientation.NORTH, new Position(1,1)));
+        Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Plateau plateau = new Plateau(10, 10);
 
         plateau.add(rover);

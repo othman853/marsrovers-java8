@@ -32,6 +32,6 @@ public class Plateau {
     public boolean isOccupied(final Position position) {
         return rovers
                 .stream()
-                .anyMatch(rover-> rover.location.position.x == position.x && rover.location.position.y == position.y);
+                .anyMatch(rover-> rover.position.x == position.x && rover.position.y == position.y);
     }
 }
