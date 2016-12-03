@@ -1,22 +1,20 @@
 package location;
 
-class Position {
+public class Position {
 
-    private static final int SINGLE_MOVE = 1;
+    public final int x;
+    public final int y;
 
-    final int x;
-    final int y;
-
-    Position(int x, int y) {
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    Position moveX(int amount) {
+    public Position moveX(int amount) {
         return new Position(x + amount, y);
     }
 
-    Position moveY(int amount) {
+    public Position moveY(int amount) {
         return new Position(x, y + amount);
     }
 }
