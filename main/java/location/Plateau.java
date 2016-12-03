@@ -1,5 +1,7 @@
 package location;
 
+import units.Rover;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Plateau {
 
     final int horizontalBoundary;
     final int verticalBoundary;
-    private final List<Position> occupiedPositions = new ArrayList<Position>();
+    private final List<Rover> rovers = new ArrayList<>();
 
     Plateau(int horizontalBoundary, int verticalBoundary) {
 
@@ -23,13 +25,13 @@ public class Plateau {
         this.verticalBoundary = verticalBoundary;
     }
 
-    public void add(Position position) {
-        occupiedPositions.add(position);
+    public void add(Rover rover) {
+        rovers.add(rover);
     }
 
     public boolean isOccupied(final Position position) {
-        return occupiedPositions
+        return rovers
                 .stream()
-                .anyMatch(occupiedPosition -> occupiedPosition.x == position.x && occupiedPosition.y == position.y);
+                .anyMatch(rover-> rover.location.position.x == position.x && rover.location.position.y == position.y);
     }
 }
