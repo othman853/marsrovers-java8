@@ -4,20 +4,20 @@ package location;
 public enum Orientation {
 
     SOUTH("S", true, -1) {
-        Orientation left() {return WEST;}
-        Orientation right() {return EAST;}
+        public Orientation left() {return WEST;}
+        public Orientation right() {return EAST;}
     },
     WEST("W", false, -1) {
-        Orientation left() {return SOUTH;}
-        Orientation right() {return NORTH;}
+        public Orientation left() {return SOUTH;}
+        public Orientation right() {return NORTH;}
     },
     NORTH("N", true, +1) {
-        Orientation left() {return WEST;}
-        Orientation right() {return EAST;}
+        public Orientation left() {return WEST;}
+        public Orientation right() {return EAST;}
     },
     EAST("E", false, +1) {
-        Orientation left() {return NORTH;}
-        Orientation right() {return SOUTH;}
+        public Orientation left() {return NORTH;}
+        public Orientation right() {return SOUTH;}
     };
 
 
@@ -31,11 +31,11 @@ public enum Orientation {
         this.move = move;
     }
 
-    boolean isVertical() {
+    public boolean isVertical() {
         return isVertical;
     }
 
-    int move() {
+    public int move() {
         return move;
     }
 
@@ -44,7 +44,7 @@ public enum Orientation {
         return this.string;
     }
 
-    abstract Orientation left();
-    abstract Orientation right();
+    public abstract Orientation left();
+    public abstract Orientation right();
 
 }
