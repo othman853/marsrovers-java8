@@ -17,4 +17,9 @@ public class Position {
     public Position moveY(int amount) {
         return new Position(x, y + amount);
     }
+
+    @Override
+    public String toString() {
+        return x + ", " +  y;
+    }
 }
