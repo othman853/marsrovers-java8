@@ -33,4 +33,8 @@ public class Rover {
                 : new Rover(id, orientation, position.moveX(orientation.move()));
     }
 
+    @Override
+    public String toString() {
+        return String.join(" ", id, position.toString(), orientation.toString());
+    }
 }
