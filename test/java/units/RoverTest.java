@@ -9,12 +9,11 @@ import static location.Orientation.*;
 public class RoverTest {
 
     private final String roverId = "a";
+    private final Rover rover = new Rover(roverId, NORTH, new Position(1,1));
 
 
     @Test
     public void roverShouldMoveOrientationLeft() throws Exception {
-
-        Rover rover = new Rover(roverId, NORTH, new Position(1,1));
 
         Rover newRover = rover.left();
 
@@ -24,7 +23,6 @@ public class RoverTest {
 
     @Test
     public void locationShouldMoveOrientationRight() throws Exception {
-        Rover rover = new Rover(roverId, NORTH, new Position(1,1));
 
         Rover newRover = rover.right();
 
@@ -34,7 +32,6 @@ public class RoverTest {
 
     @Test
     public void locationShouldMovePositionUp() throws Exception {
-        Rover rover = new Rover(roverId, NORTH, new Position(1,1));
 
         Rover newRover = rover.move();
 
@@ -44,6 +41,7 @@ public class RoverTest {
 
     @Test
     public void locationShouldMovePositionDown() throws Exception {
+
         Rover rover = new Rover(roverId, SOUTH, new Position(1,1));
 
         Rover newRover = rover.move();
@@ -52,4 +50,11 @@ public class RoverTest {
 
     }
 
+    @Test
+    public void toStringShouldBeCorrect() throws Exception {
+        String asString = rover.toString();
+
+        assertEquals("a " + rover.position.toString() + " " + rover.orientation.toString(), asString);
+
+    }
 }
