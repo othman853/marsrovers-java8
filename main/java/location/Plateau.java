@@ -4,6 +4,7 @@ import units.Rover;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Plateau {
 
@@ -13,11 +14,11 @@ public class Plateau {
 
     Plateau(int horizontalBoundary, int verticalBoundary) {
 
-        if(horizontalBoundary <= 0) {
+        if (horizontalBoundary <= 0) {
             throw new IllegalArgumentException("Horizontal Boundary must be grater than 0");
         }
 
-        if(verticalBoundary <= 0) {
+        if (verticalBoundary <= 0) {
             throw new IllegalArgumentException("Vertical Boundary must be grater than 0");
         }
 
@@ -25,23 +26,19 @@ public class Plateau {
         this.verticalBoundary = verticalBoundary;
     }
 
-    public void add(Rover rover) {
-        rovers.put(rover.id, rover);
-    }
-
-    boolean isOccupied(final Position position) {
+    public boolean isOccupied(final Position position) {
         return rovers
                 .entrySet()
                 .stream()
                 .anyMatch(es-> es.getValue().position.x == position.x && es.getValue().position.y == position.y);
     }
 
-    void set(Rover rover) {
+    public void set(Rover rover) {
         rovers.put(rover.id, rover);
     }
 
-    Rover get(String roverId) {
-        return rovers.get(roverId);
+    public Optional<Rover> get(String roverId) {
+        return Optional.ofNullable(rovers.get(roverId));
     }
 
     @Override

@@ -3,6 +3,8 @@ package location;
 import org.junit.Test;
 import units.Rover;
 
+import java.util.Optional;
+
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,14 +35,15 @@ public class PlateauTest {
 
 
     @Test
-    public void shouldAddNewPositionToOccupiedPositions() throws Exception {
+    public void shouldSetANewRoverToThePlateu() throws Exception {
 
         Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Plateau plateau = new Plateau(10, 10);
 
-        plateau.add(rover);
+        plateau.set(rover);
 
         assertTrue(plateau.isOccupied(rover.position));
+        assertEquals(rover, plateau.get("a").get());
     }
 
     @Test
@@ -48,7 +51,7 @@ public class PlateauTest {
         Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Plateau plateau = new Plateau(10, 10);
 
-        plateau.add(rover);
+        plateau.set(rover);
         boolean actualResponse = plateau.isOccupied(new Position(2,2));
 
         assertFalse(actualResponse);
@@ -61,5 +64,15 @@ public class PlateauTest {
         boolean actualResponse = plateau.isOccupied(new Position(2,2));
 
         assertFalse(actualResponse);
+    }
+
+    @Test
+    public void getInexistentRoverShouldReturnEmptyOptional() throws Exception {
+        Plateau plateau = new Plateau(10, 10);
+
+        Optional<Rover> rover = plateau.get("whatever");
+
+        assertFalse(rover.isPresent());
+
     }
 }
