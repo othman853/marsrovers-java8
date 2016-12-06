@@ -2,14 +2,14 @@ package location;
 
 import units.Rover;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Plateau {
 
     final int horizontalBoundary;
     final int verticalBoundary;
-    private final List<Rover> rovers = new ArrayList<>();
+    final Map<String, Rover> rovers = new HashMap<>();
 
     Plateau(int horizontalBoundary, int verticalBoundary) {
 
@@ -26,12 +26,31 @@ public class Plateau {
     }
 
     public void add(Rover rover) {
-        rovers.add(rover);
+        rovers.put(rover.id, rover);
     }
 
-    public boolean isOccupied(final Position position) {
+    boolean isOccupied(final Position position) {
         return rovers
+                .entrySet()
                 .stream()
-                .anyMatch(rover-> rover.position.x == position.x && rover.position.y == position.y);
+                .anyMatch(es-> es.getValue().position.x == position.x && es.getValue().position.y == position.y);
+    }
+
+    void set(Rover rover) {
+        rovers.put(rover.id, rover);
+    }
+
+    Rover get(String roverId) {
+        return rovers.get(roverId);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+
+        rovers.entrySet().forEach(es -> builder.append("[").append(es.getValue().toString()).append("]"));
+
+        return builder.toString();
+
     }
 }
