@@ -4,6 +4,8 @@ import control.MissionController;
 import location.*;
 import units.Rover;
 
+import java.util.Scanner;
+
 public class MarsRovers {
 
     public static void main(String[] args) {
@@ -20,11 +22,19 @@ public class MarsRovers {
 
         controller.add(rover);
 
-        Command command = new Command("MMMMMMMMMMMR");
-        Command command2 = new Command("MM");
+        System.out.println("Plateau Status: ");
+        System.out.println(plateau.toString());
+
+        System.out.println("Type a command to send to the rover");
+        Scanner reader = new Scanner(System.in);
+
+        String commandString = reader.nextLine();
+
+        Command command = new Command(commandString);
 
         controller.send("a1", command);
-        controller.send("a1", command2);
+
+        System.out.println("Result");
 
         System.out.println(plateau.toString());
 
