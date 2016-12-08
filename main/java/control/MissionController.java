@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class MissionController {
 
-    private final Plateau plateau;
+    public final Plateau plateau;
     private final CommandExecutor executor;
 
     public MissionController(Plateau plateau, CommandExecutor executor) {
