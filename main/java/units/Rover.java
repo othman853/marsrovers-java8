@@ -28,9 +28,9 @@ public class Rover {
 
     public Rover move() {
 
-        return (orientation.isVertical())
-                ? new Rover(id, orientation, position.moveY(orientation.move()))
-                : new Rover(id, orientation, position.moveX(orientation.move()));
+        return (orientation.isVertical)
+                ? new Rover(id, orientation, position.moveY(orientation.move))
+                : new Rover(id, orientation, position.moveX(orientation.move));
     }
 
     @Override

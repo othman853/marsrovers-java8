@@ -23,12 +23,12 @@ public class OrientationTest {
 
     @Test
     public void northShouldBeVertical() throws Exception {
-        assertTrue(NORTH.isVertical());
+        assertTrue(NORTH.isVertical);
     }
 
     @Test
     public void northShouldMoveUp() throws Exception {
-        assertEquals(1, NORTH.move());
+        assertEquals(1, NORTH.move);
     }
 
     @Test
@@ -39,12 +39,12 @@ public class OrientationTest {
 
     @Test
     public void eastShouldBeHorizontal() throws Exception {
-        assertFalse(EAST.isVertical());
+        assertFalse(EAST.isVertical);
     }
 
     @Test
     public void eastShouldMoveRight() throws Exception {
-        assertEquals(1, EAST.move());
+        assertEquals(1, EAST.move);
     }
 
     @Test
@@ -60,12 +60,12 @@ public class OrientationTest {
 
     @Test
     public void southShouldBeVertical() throws Exception {
-        assertTrue(SOUTH.isVertical());
+        assertTrue(SOUTH.isVertical);
     }
 
     @Test
     public void southShouldGoDown() throws Exception {
-        assertEquals(-1, SOUTH.move());
+        assertEquals(-1, SOUTH.move);
     }
 
     @Test
@@ -81,12 +81,12 @@ public class OrientationTest {
 
     @Test
     public void westShouldBeHorizontal() throws Exception {
-        assertFalse(WEST.isVertical());
+        assertFalse(WEST.isVertical);
     }
 
     @Test
     public void westShouldMoveLeft() throws Exception {
-        assertEquals(-1, WEST.move());
+        assertEquals(-1, WEST.move);
     }
 
     @Test

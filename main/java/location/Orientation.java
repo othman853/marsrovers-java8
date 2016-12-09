@@ -22,21 +22,13 @@ public enum Orientation {
 
 
     private String string;
-    private boolean isVertical;
-    private int move;
+    public final boolean isVertical;
+    public final int move;
 
     Orientation(String string, boolean isVertical, int move) {
         this.string = string;
         this.isVertical = isVertical;
         this.move = move;
-    }
-
-    public boolean isVertical() {
-        return isVertical;
-    }
-
-    public int move() {
-        return move;
     }
 
     @Override
