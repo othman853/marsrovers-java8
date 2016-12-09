@@ -6,10 +6,10 @@ import org.junit.Test;
 import units.Rover;
 
 import static org.junit.Assert.*;
-import static control.CommandDelegator.*;
+import static control.CommandDelegation.*;
 
 
-public class CommandDelegatorTest {
+public class CommandDelegationTest {
 
     @Test
     public void fromStringShouldReturnProperCommand() throws Exception {

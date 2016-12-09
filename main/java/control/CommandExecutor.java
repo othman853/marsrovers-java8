@@ -16,15 +16,15 @@ public class CommandExecutor {
 
         Rover delegatedRover = rover;
 
-        List<CommandDelegator> commands = command
+        List<CommandDelegation> delegations = command
                                                 .getMoveList()
                                                 .stream()
-                                                .map(CommandDelegator::fromString)
+                                                .map(CommandDelegation::fromString)
                                                 .collect(Collectors.toList());
 
 
-        for (CommandDelegator commandDelegator : commands) {
-            delegatedRover = commandDelegator.delegate(delegatedRover);
+        for (CommandDelegation delegation : delegations) {
+            delegatedRover = delegation.delegate(delegatedRover);
         }
 
         return delegatedRover;

@@ -5,7 +5,7 @@ import units.Rover;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum CommandDelegator {
+public enum CommandDelegation {
 
     RIGHT("R") {
         public Rover delegate(Rover rover) {return rover.right();}
@@ -20,13 +20,13 @@ public enum CommandDelegator {
 
     private String command;
 
-    CommandDelegator(String command) {
+    CommandDelegation(String command) {
         this.command = command;
     }
 
-    public static CommandDelegator fromString(String string) {
+    public static CommandDelegation fromString(String string) {
 
-        Optional<CommandDelegator> delegator = Arrays
+        Optional<CommandDelegation> delegator = Arrays
                 .stream(values())
                 .filter(d -> d.command.equals(string))
                 .findFirst();
