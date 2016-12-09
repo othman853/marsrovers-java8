@@ -1,43 +1,86 @@
+import com.sun.org.apache.xpath.internal.operations.Or;
 import control.Command;
 import control.CommandExecutor;
 import control.MissionController;
-import location.*;
+import exceptions.RoverNotFoundException;
+import io.IOHandler;
+import io.IOHandlerFactory;
+import location.Orientation;
+import location.PlateauFactory;
+import location.Position;
 import units.Rover;
-
-import java.util.Scanner;
 
 public class MarsRovers {
 
+    private static final String EXIT_SIGN = "0";
+
     public static void main(String[] args) {
 
-        PlateauFactory factory = new PlateauFactory();
-        Plateau plateau = factory.createDefaultPlateau();
-
-        CommandExecutor executor = new CommandExecutor();
-
-        MissionController controller = new MissionController(plateau, executor);
+        MissionController controller = new MissionController(new PlateauFactory().createDefaultPlateau(), new CommandExecutor());
 
         Rover rover = new Rover("a1", Orientation.NORTH, new Position(1,2));
-
-
         controller.add(rover);
 
-        System.out.println("Plateau Status: ");
-        System.out.println(plateau.toString());
+        IOHandler io = new IOHandlerFactory().createDefaultIOHandler();
 
-        System.out.println("Type a command to send to the rover");
-        Scanner reader = new Scanner(System.in);
+        while (true) {
 
-        String commandString = reader.nextLine();
+            System.out.println(controller.getStatus());
 
-        Command command = new Command(commandString);
+            String input = io.readWithMessage("Type [rover_id,command] or 0 to exit: ");
 
-        controller.send("a1", command);
+            if (input.equals(EXIT_SIGN)) {
+                break;
+            }
 
-        System.out.println("Result");
+            try {
 
-        System.out.println(plateau.toString());
+                if (input.equals("A")) {
+                    String roverInput = io.readWithMessage("Type [rover_id,x,y,orientation] or c to cancel: ");
 
+                    if (!roverInput.equals("C")) {
+                        String [] roverInfo = roverInput.split(",");
+                        Orientation orientation = findOrienation(roverInfo[3]);
+
+                        Rover rover1 = new Rover(roverInfo[0], orientation, new Position(Integer.parseInt(roverInfo[1]), Integer.parseInt(roverInfo[2])));
+                        controller.add(rover1);
+                    }
+                } else {
+                    String roverId = input.split(",")[0];
+                    String command  = input.split(",")[1];
+
+                    controller.send(roverId, new Command(command));
+                }
+
+            } catch (RoverNotFoundException | IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Invalid input format");
+            }
+
+
+        }
+
+    }
+
+    private static Orientation findOrienation(String roverInfo) {
+        if (roverInfo.equals("N")) {
+            return Orientation.NORTH;
+        }
+
+        if (roverInfo.equals("E")) {
+            return Orientation.EAST;
+        }
+
+        if (roverInfo.equals("W")) {
+            return Orientation.WEST;
+        }
+
+        if (roverInfo.equals("S")) {
+            return Orientation.SOUTH;
+        }
+
+        throw new IllegalArgumentException("Invalid orientation");
     }
 
 }
