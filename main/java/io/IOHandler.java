@@ -8,7 +8,7 @@ public class IOHandler {
     private final Scanner scanner;
     private final Output output;
 
-    public IOHandler(Scanner scanner, Output output) {
+    IOHandler(Scanner scanner, Output output) {
         this.scanner = scanner;
         this.output = output;
     }
