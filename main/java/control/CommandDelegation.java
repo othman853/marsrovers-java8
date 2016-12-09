@@ -32,7 +32,7 @@ public enum CommandDelegation {
                 .findFirst();
 
         if (!delegation.isPresent()) {
-            throw new IllegalArgumentException("No such command");
+            throw new IllegalArgumentException("No such command " + string);
         }
 
         return delegation.get();
