@@ -94,6 +94,18 @@ public class OrientationTest {
         assertEquals("W", WEST.toString());
     }
 
+    @Test
+    public void fromStringShouldReturnCorrectValues() throws Exception {
 
+        assertEquals(NORTH, fromString("N"));
+        assertEquals(EAST, fromString("E"));
+        assertEquals(WEST, fromString("W"));
+        assertEquals(SOUTH, fromString("S"));
 
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void fromStringShouldThrowExceptionIfValueIsInvalid() throws Exception {
+        fromString("A");
+    }
 }

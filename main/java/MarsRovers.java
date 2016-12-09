@@ -40,7 +40,7 @@ public class MarsRovers {
 
                     if (!roverInput.equals("C")) {
                         String [] roverInfo = roverInput.split(",");
-                        Orientation orientation = findOrienation(roverInfo[3]);
+                        Orientation orientation = Orientation.fromString(roverInfo[3]);
 
                         Rover rover1 = new Rover(roverInfo[0], orientation, new Position(Integer.parseInt(roverInfo[1]), Integer.parseInt(roverInfo[2])));
                         controller.add(rover1);
@@ -61,26 +61,6 @@ public class MarsRovers {
 
         }
 
-    }
-
-    private static Orientation findOrienation(String roverInfo) {
-        if (roverInfo.equals("N")) {
-            return Orientation.NORTH;
-        }
-
-        if (roverInfo.equals("E")) {
-            return Orientation.EAST;
-        }
-
-        if (roverInfo.equals("W")) {
-            return Orientation.WEST;
-        }
-
-        if (roverInfo.equals("S")) {
-            return Orientation.SOUTH;
-        }
-
-        throw new IllegalArgumentException("Invalid orientation");
     }
 
 }
