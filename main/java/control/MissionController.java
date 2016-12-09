@@ -1,6 +1,7 @@
 package control;
 
 
+import exceptions.RoverNotFoundException;
 import location.Plateau;
 import units.Rover;
 
@@ -20,16 +21,17 @@ public class MissionController {
         plateau.set(rover);
     }
 
-    public void send(String roverId, Command command) {
+    public void send(String roverId, Command command) throws RoverNotFoundException {
         Optional<Rover> rover = plateau.get(roverId);
 
-        if (rover.isPresent()) {
+        if (!rover.isPresent()) {
+            throw new RoverNotFoundException("No rover available with id: " + roverId);
+        }
 
-            Rover movedRover = executor.execute(rover.get(), command);
+        Rover movedRover = executor.execute(rover.get(), command);
 
-            if (!plateau.isOccupied(movedRover.position)) {
-                plateau.set(movedRover);
-            }
+        if (!plateau.isOccupied(movedRover.position)) {
+            plateau.set(movedRover);
         }
 
     }
