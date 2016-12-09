@@ -26,16 +26,16 @@ public enum CommandDelegation {
 
     public static CommandDelegation fromString(String string) {
 
-        Optional<CommandDelegation> delegator = Arrays
+        Optional<CommandDelegation> delegation = Arrays
                 .stream(values())
                 .filter(d -> d.command.equals(string))
                 .findFirst();
 
-        if (!delegator.isPresent()) {
+        if (!delegation.isPresent()) {
             throw new IllegalArgumentException("No such command");
         }
 
-        return delegator.get();
+        return delegation.get();
     }
 
     public abstract Rover delegate(Rover rover);
