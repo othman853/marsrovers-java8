@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class MissionController {
 
-    public final Plateau plateau;
+    private final Plateau plateau;
     private final CommandExecutor executor;
 
     public MissionController(Plateau plateau, CommandExecutor executor) {
@@ -31,6 +31,11 @@ public class MissionController {
                 plateau.set(movedRover);
             }
         }
+
+    }
+
+    public String getStatus() {
+        return plateau.toString();
     }
 
 }
