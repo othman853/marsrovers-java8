@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class CommandExecutor {
 
-    public Rover execute(Rover rover, Command command) {
+    Rover execute(Rover rover, Command command) {
 
         if (!command.isExecutable()) {
             return rover;
