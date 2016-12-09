@@ -1,5 +1,6 @@
 package control;
 
+import exceptions.RoverNotFoundException;
 import location.Plateau;
 import location.Position;
 import org.junit.Before;
@@ -44,8 +45,10 @@ public class MissionControllerTest {
     }
 
     @Test
-    public void sendShouldCallPlateauGet() throws Exception {
-        when(plateau.get(anyString())).thenReturn(Optional.ofNullable(null));
+    public void sendShouldCallPlateauGet() throws RoverNotFoundException {
+        when(plateau.get(anyString())).thenReturn(Optional.ofNullable(rover));
+        when(plateau.isOccupied(any(Position.class))).thenReturn(true);
+        when(executor.execute(any(Rover.class), any(Command.class))).thenReturn(movedRover);
 
         controller.send("abc", new Command("a"));
 
@@ -54,7 +57,7 @@ public class MissionControllerTest {
     }
 
     @Test
-    public void sendShouldCallExecutor() throws Exception {
+    public void sendShouldCallExecutor() throws RoverNotFoundException {
         when(plateau.get(anyString())).thenReturn(Optional.ofNullable(rover));
         when(plateau.isOccupied(any(Position.class))).thenReturn(true);
         when(executor.execute(any(Rover.class), any(Command.class))).thenReturn(movedRover);
@@ -66,7 +69,7 @@ public class MissionControllerTest {
     }
 
     @Test
-    public void sendShouldMoveRover() throws Exception {
+    public void sendShouldMoveRover() throws RoverNotFoundException {
 
         when(plateau.get(anyString())).thenReturn(Optional.ofNullable(rover));
         when(plateau.isOccupied(any(Position.class))).thenReturn(false);
@@ -75,6 +78,15 @@ public class MissionControllerTest {
         controller.send("abc", command);
 
         verify(plateau).set(movedRover);
+
+    }
+
+    @Test(expected = RoverNotFoundException.class)
+    public void sendShouldThrowException() throws RoverNotFoundException {
+
+        when(plateau.get(anyString())).thenReturn(Optional.ofNullable(null));
+
+        controller.send("abc", command);
 
     }
 }
