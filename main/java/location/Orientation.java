@@ -42,7 +42,7 @@ public enum Orientation {
                 .findFirst();
 
         if (!orientationOptional.isPresent()) {
-            throw new IllegalArgumentException("Orientation does not exists");
+            throw new IllegalArgumentException("Orientation " + orientation + " does not exists");
         }
 
         return orientationOptional.get();
