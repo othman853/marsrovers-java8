@@ -1,8 +1,8 @@
-package cli;
+package com.marsrovers.cli;
 
 
-import control.MissionController;
-import io.IOHandler;
+import com.marsrovers.control.MissionController;
+import com.marsrovers.io.IOHandler;
 
 public class MainMenu {
 

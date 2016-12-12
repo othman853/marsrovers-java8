@@ -1,12 +1,12 @@
-package cli;
+package com.marsrovers.cli;
 
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-import control.MissionController;
-import io.IOHandler;
-import location.Orientation;
-import location.Position;
-import units.Rover;
+import com.marsrovers.control.MissionController;
+import com.marsrovers.exceptions.RoverManipulationException;
+import com.marsrovers.io.IOHandler;
+import com.marsrovers.location.Orientation;
+import com.marsrovers.location.Position;
+import com.marsrovers.units.Rover;
 
 public class AddRoverCliComponent implements CliComponent {
 
@@ -43,7 +43,7 @@ public class AddRoverCliComponent implements CliComponent {
             controller.add(createRover(roverId, positionX, positionY, orientationString));
         } catch (NumberFormatException ex) {
             handler.write("An invalid number was received, the error is: " + ex.getMessage());
-        } catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException | RoverManipulationException ex) {
             handler.write(ex.getMessage());
         }
 

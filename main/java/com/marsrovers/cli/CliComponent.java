@@ -1,4 +1,4 @@
-package cli;
+package com.marsrovers.cli;
 
 
 public interface CliComponent {
