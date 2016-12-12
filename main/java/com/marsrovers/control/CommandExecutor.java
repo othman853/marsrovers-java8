@@ -10,10 +10,6 @@ public class CommandExecutor {
 
     Rover execute(Rover rover, Command command) {
 
-        if (!command.isExecutable()) {
-            return rover;
-        }
-
         Rover delegatedRover = rover;
 
         List<CommandDelegation> delegations = command

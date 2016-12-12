@@ -2,6 +2,12 @@ package com.marsrovers.control;
 
 import org.junit.Test;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -16,10 +22,10 @@ public class CommandTest {
         Command command3 = new Command("LLMRL");
         Command command4 = new Command("LLMRLM");
 
-        assertTrue(command1.isExecutable());
-        assertTrue(command2.isExecutable());
-        assertTrue(command3.isExecutable());
-        assertTrue(command4.isExecutable());
+        assertEquals(asList("L", "M", "R"), command1.getMoveList());
+        assertEquals(asList("L", "M", "R", "L"), command2.getMoveList());
+        assertEquals(asList("L", "L", "M", "R", "L"), command3.getMoveList());
+        assertEquals(asList("L", "L", "M", "R", "L", "M"), command4.getMoveList());
     }
 
     @Test
@@ -27,7 +33,9 @@ public class CommandTest {
 
         Command command = new Command("ABC");
 
-        assertFalse(command.isExecutable());
+        List<String> moveList = command.getMoveList();
+
+        assertEquals(emptyList(), moveList);
     }
 
     @Test
@@ -35,7 +43,7 @@ public class CommandTest {
 
         Command command = new Command("");
 
-        assertFalse(command.isExecutable());
+        assertEquals(emptyList(), command.getMoveList());
     }
 
     @Test
@@ -43,7 +51,7 @@ public class CommandTest {
 
         Command command = new Command(null);
 
-        assertFalse(command.isExecutable());
+        assertEquals(emptyList(), command.getMoveList());
     }
 
     @Test

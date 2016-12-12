@@ -17,7 +17,7 @@ public class Command {
         this.commandString = commandString;
     }
 
-    boolean isExecutable() {
+    private boolean isExecutable() {
         return commandString != null && commandString.matches(VALID_COMMAND_REGEX);
     }
 
