@@ -1,9 +1,11 @@
-import cli.MainMenu;
-import control.CommandExecutor;
-import control.MissionController;
-import io.IOHandler;
-import io.IOHandlerFactory;
-import location.PlateauFactory;
+package com.marsrovers;
+
+import com.marsrovers.cli.MainMenu;
+import com.marsrovers.control.CommandExecutor;
+import com.marsrovers.control.MissionController;
+import com.marsrovers.io.IOHandler;
+import com.marsrovers.io.IOHandlerFactory;
+import com.marsrovers.location.PlateauFactory;
 
 
 public class Main {

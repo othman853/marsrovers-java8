@@ -1,7 +1,9 @@
-import cli.CliComponent;
-import cli.MainMenu;
-import control.MissionController;
-import io.IOHandler;
+package com.marsrovers;
+
+import com.marsrovers.cli.CliComponent;
+import com.marsrovers.cli.MainMenu;
+import com.marsrovers.control.MissionController;
+import com.marsrovers.io.IOHandler;
 
 class MarsRovers {
 
