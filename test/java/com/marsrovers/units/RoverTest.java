@@ -1,10 +1,10 @@
-package units;
+package com.marsrovers.units;
 
-import location.Position;
+import com.marsrovers.location.Position;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import static location.Orientation.*;
+import static com.marsrovers.location.Orientation.*;
+import static org.junit.Assert.assertEquals;
 
 public class RoverTest {
 

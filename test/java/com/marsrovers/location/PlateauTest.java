@@ -1,7 +1,7 @@
-package location;
+package com.marsrovers.location;
 
 import org.junit.Test;
-import units.Rover;
+import com.marsrovers.units.Rover;
 
 import java.util.Optional;
 
@@ -42,7 +42,7 @@ public class PlateauTest {
 
         plateau.set(rover);
 
-        assertTrue(plateau.isOccupied(rover.position));
+        assertTrue(plateau.isOccupied(rover));
         assertEquals(rover, plateau.get("a").get());
     }
 
@@ -52,7 +52,7 @@ public class PlateauTest {
         Plateau plateau = new Plateau(10, 10);
 
         plateau.set(rover);
-        boolean actualResponse = plateau.isOccupied(new Position(2,2));
+        boolean actualResponse = plateau.isOccupied(new Rover("a", Orientation.EAST, new Position(2,2)));
 
         assertFalse(actualResponse);
     }
@@ -61,7 +61,7 @@ public class PlateauTest {
     public void shouldAInformThatThePositionIsFreeInAnEmptyPositionsList() throws Exception {
         Plateau plateau = new Plateau(10, 10);
 
-        boolean actualResponse = plateau.isOccupied(new Position(2,2));
+        boolean actualResponse = plateau.isOccupied(new Rover("a", Orientation.EAST, new Position(2,2)));
 
         assertFalse(actualResponse);
     }

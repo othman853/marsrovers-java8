@@ -1,6 +1,6 @@
-package location;
+package com.marsrovers.location;
 
-import units.Rover;
+import com.marsrovers.units.Rover;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +26,11 @@ public class Plateau {
         this.verticalBoundary = verticalBoundary;
     }
 
-    public boolean isOccupied(final Position position) {
+    public boolean isOccupied(final Rover rover) {
         return rovers
                 .entrySet()
                 .stream()
-                .anyMatch(es-> es.getValue().position.x == position.x && es.getValue().position.y == position.y);
+                .anyMatch(es-> es.getValue().position.equals(rover.position));
     }
 
     public void set(Rover rover) {
@@ -40,6 +40,7 @@ public class Plateau {
     public Optional<Rover> get(String roverId) {
         return Optional.ofNullable(rovers.get(roverId));
     }
+
 
     @Override
     public String toString() {

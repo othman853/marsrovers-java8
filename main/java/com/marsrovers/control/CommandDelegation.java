@@ -1,6 +1,6 @@
-package control;
+package com.marsrovers.control;
 
-import units.Rover;
+import com.marsrovers.units.Rover;
 
 import java.util.Arrays;
 import java.util.Optional;

@@ -1,12 +1,12 @@
-package control;
+package com.marsrovers.control;
 
-import location.Orientation;
-import location.Position;
+import com.marsrovers.location.Orientation;
+import com.marsrovers.location.Position;
 import org.junit.Test;
-import units.Rover;
+import com.marsrovers.units.Rover;
 
-import static org.junit.Assert.*;
-import static control.CommandDelegation.*;
+import static com.marsrovers.control.CommandDelegation.*;
+import static org.junit.Assert.assertEquals;
 
 
 public class CommandDelegationTest {

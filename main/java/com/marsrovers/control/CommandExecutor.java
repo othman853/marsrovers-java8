@@ -1,7 +1,7 @@
-package control;
+package com.marsrovers.control;
 
 
-import units.Rover;
+import com.marsrovers.units.Rover;
 
 import java.util.List;
 import java.util.stream.Collectors;

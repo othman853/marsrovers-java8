@@ -1,4 +1,4 @@
-package location;
+package com.marsrovers.location;
 
 
 import org.junit.Test;

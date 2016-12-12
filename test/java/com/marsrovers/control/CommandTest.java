@@ -1,4 +1,4 @@
-package control;
+package com.marsrovers.control;
 
 import org.junit.Test;
 

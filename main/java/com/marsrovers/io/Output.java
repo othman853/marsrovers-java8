@@ -1,4 +1,4 @@
-package io;
+package com.marsrovers.io;
 
 @FunctionalInterface
 public interface Output {

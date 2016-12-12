@@ -1,14 +1,16 @@
-package control;
+package com.marsrovers.control;
 
-import exceptions.RoverNotFoundException;
-import location.Plateau;
-import location.Position;
+import com.marsrovers.exceptions.RoverManipulationException;
+import com.marsrovers.exceptions.RoverNotFoundException;
+import com.marsrovers.location.Orientation;
+import com.marsrovers.location.Plateau;
+import com.marsrovers.location.Position;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import units.Rover;
+import com.marsrovers.units.Rover;
 
 import java.util.Optional;
 
@@ -31,6 +33,9 @@ public class MissionControllerTest {
     private Rover rover;
 
     @Mock
+    private Position position;
+
+    @Mock
     private Rover movedRover;
 
     private MissionController controller;
@@ -45,9 +50,26 @@ public class MissionControllerTest {
     }
 
     @Test
+    public void addShouldCallPlateauAdd() throws Exception, RoverManipulationException {
+        when(plateau.isOccupied(rover)).thenReturn(false);
+
+        controller.add(rover);
+
+        verify(plateau).set(rover);
+    }
+
+    @Test(expected = RoverManipulationException.class)
+    public void addShouldThrowExceptionWhenPositionIsOccupied() throws Exception, RoverManipulationException {
+        Rover fakeRover = new Rover("a", Orientation.NORTH, new Position(1,1));
+        when(plateau.isOccupied(fakeRover)).thenReturn(true);
+
+        controller.add(fakeRover);
+    }
+
+    @Test
     public void sendShouldCallPlateauGet() throws RoverNotFoundException {
         when(plateau.get(anyString())).thenReturn(Optional.ofNullable(rover));
-        when(plateau.isOccupied(any(Position.class))).thenReturn(true);
+        when(plateau.isOccupied(any(Rover.class))).thenReturn(true);
         when(executor.execute(any(Rover.class), any(Command.class))).thenReturn(movedRover);
 
         controller.send("abc", new Command("a"));
@@ -59,7 +81,7 @@ public class MissionControllerTest {
     @Test
     public void sendShouldCallExecutor() throws RoverNotFoundException {
         when(plateau.get(anyString())).thenReturn(Optional.ofNullable(rover));
-        when(plateau.isOccupied(any(Position.class))).thenReturn(true);
+        when(plateau.isOccupied(any(Rover.class))).thenReturn(true);
         when(executor.execute(any(Rover.class), any(Command.class))).thenReturn(movedRover);
 
         controller.send("abc", command);
@@ -72,7 +94,7 @@ public class MissionControllerTest {
     public void sendShouldMoveRover() throws RoverNotFoundException {
 
         when(plateau.get(anyString())).thenReturn(Optional.ofNullable(rover));
-        when(plateau.isOccupied(any(Position.class))).thenReturn(false);
+        when(plateau.isOccupied(any(Rover.class))).thenReturn(false);
         when(executor.execute(any(Rover.class), any(Command.class))).thenReturn(movedRover);
 
         controller.send("abc", command);
