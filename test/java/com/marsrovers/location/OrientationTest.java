@@ -23,12 +23,12 @@ public class OrientationTest {
 
     @Test
     public void northShouldBeVertical() throws Exception {
-        assertTrue(NORTH.isVertical);
+        assertTrue(NORTH.isVertical());
     }
 
     @Test
     public void northShouldMoveUp() throws Exception {
-        assertEquals(1, NORTH.move);
+        assertEquals(1, NORTH.getMove());
     }
 
     @Test
@@ -39,12 +39,12 @@ public class OrientationTest {
 
     @Test
     public void eastShouldBeHorizontal() throws Exception {
-        assertFalse(EAST.isVertical);
+        assertFalse(EAST.isVertical());
     }
 
     @Test
     public void eastShouldMoveRight() throws Exception {
-        assertEquals(1, EAST.move);
+        assertEquals(1, EAST.getMove());
     }
 
     @Test
@@ -60,12 +60,12 @@ public class OrientationTest {
 
     @Test
     public void southShouldBeVertical() throws Exception {
-        assertTrue(SOUTH.isVertical);
+        assertTrue(SOUTH.isVertical());
     }
 
     @Test
     public void southShouldGoDown() throws Exception {
-        assertEquals(-1, SOUTH.move);
+        assertEquals(-1, SOUTH.getMove());
     }
 
     @Test
@@ -81,12 +81,12 @@ public class OrientationTest {
 
     @Test
     public void westShouldBeHorizontal() throws Exception {
-        assertFalse(WEST.isVertical);
+        assertFalse(WEST.isVertical());
     }
 
     @Test
     public void westShouldMoveLeft() throws Exception {
-        assertEquals(-1, WEST.move);
+        assertEquals(-1, WEST.getMove());
     }
 
     @Test
@@ -97,15 +97,15 @@ public class OrientationTest {
     @Test
     public void fromStringShouldReturnCorrectValues() throws Exception {
 
-        assertEquals(NORTH, fromString("N"));
-        assertEquals(EAST, fromString("E"));
-        assertEquals(WEST, fromString("W"));
-        assertEquals(SOUTH, fromString("S"));
+        assertEquals(NORTH, Companion.fromString("N"));
+        assertEquals(EAST, Companion.fromString("E"));
+        assertEquals(WEST, Companion.fromString("W"));
+        assertEquals(SOUTH, Companion.fromString("S"));
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void fromStringShouldThrowExceptionIfValueIsInvalid() throws Exception {
-        fromString("A");
+        Companion.fromString("A");
     }
 }

@@ -26,7 +26,7 @@ public class AddRoverCliComponent implements CliComponent {
 
         int x = Integer.parseInt(xString);
         int y = Integer.parseInt(yString);
-        Orientation orientation = Orientation.fromString(orientationString);
+        Orientation orientation = Orientation.Companion.fromString(orientationString);
 
         return new Rover(roverId, orientation, new Position(x,y));
     }
