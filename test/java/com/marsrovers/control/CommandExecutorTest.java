@@ -41,7 +41,7 @@ public class CommandExecutorTest {
 
         Rover movedRover = executor.execute(rover, command);
 
-        assertEquals(2, movedRover.position.y);
+        assertEquals(2, movedRover.position.getY());
 
     }
 
@@ -63,7 +63,7 @@ public class CommandExecutorTest {
 
         Rover movedRover = executor.execute(rover, command);
 
-        assertEquals(0, movedRover.position.y);
+        assertEquals(0, movedRover.position.getY());
 
     }
 }

@@ -33,9 +33,6 @@ public class MissionControllerTest {
     private Rover rover;
 
     @Mock
-    private Position position;
-
-    @Mock
     private Rover movedRover;
 
     private MissionController controller;

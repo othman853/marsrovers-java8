@@ -35,7 +35,7 @@ public class RoverTest {
 
         Rover newRover = rover.move();
 
-        assertEquals(2, newRover.position.y);
+        assertEquals(2, newRover.position.getY());
 
     }
 
@@ -46,7 +46,7 @@ public class RoverTest {
 
         Rover newRover = rover.move();
 
-        assertEquals(0, newRover.position.y);
+        assertEquals(0, newRover.position.getY());
 
     }
 

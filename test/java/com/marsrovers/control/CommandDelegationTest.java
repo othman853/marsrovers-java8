@@ -46,6 +46,6 @@ public class CommandDelegationTest {
         Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Rover movedRover = MOVE.delegate(rover);
 
-        assertEquals(2, movedRover.position.y);
+        assertEquals(2, movedRover.position.getY());
     }
 }

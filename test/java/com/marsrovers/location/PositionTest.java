@@ -14,7 +14,7 @@ public class PositionTest {
 
         Position movedPosition = position.moveX(+1);
 
-        assertEquals(3, movedPosition.x);
+        assertEquals(3, movedPosition.getX());
 
     }
 
@@ -25,7 +25,7 @@ public class PositionTest {
 
         Position movedPosition = position.moveX(-1);
 
-        assertEquals(1, movedPosition.x);
+        assertEquals(1, movedPosition.getX());
 
     }
 
@@ -36,7 +36,7 @@ public class PositionTest {
 
         Position movedPosition = position.moveY(+1);
 
-        assertEquals(3, movedPosition.y);
+        assertEquals(3, movedPosition.getY());
 
     }
 
@@ -47,7 +47,7 @@ public class PositionTest {
 
         Position movedPosition = position.moveY(-1);
 
-        assertEquals(1, movedPosition.y);
+        assertEquals(1, movedPosition.getY());
 
     }
 }
