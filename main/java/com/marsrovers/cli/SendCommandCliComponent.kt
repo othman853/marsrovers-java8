@@ -21,7 +21,7 @@ class SendCommandCliComponent internal constructor(private val handler: IOHandle
             controller.send(roverId, Command(commandString))
 
         } catch (e: RoverNotFoundException) {
-            handler.write(e.message)
+            handler.write(e.message!!)
         }
 
     }
