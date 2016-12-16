@@ -9,7 +9,7 @@ class Command(private val commandString: String) {
 
     fun containsMove(): Boolean = commandString.matches(MOVE_COMMAND_REGEX.toRegex())
 
-    internal val moveList: List<String>
+    val moveList: List<String>
         get() = if (isExecutable())
             asList(*commandString.split(EMPTY_REGEX.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
         else

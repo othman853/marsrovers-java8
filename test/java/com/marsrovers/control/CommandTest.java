@@ -22,7 +22,7 @@ public class CommandTest {
         Command command3 = new Command("LLMRL");
         Command command4 = new Command("LLMRLM");
 
-        assertEquals(asList("L", "M", "R"), command1.getMoveList());
+        assertEquals(asList("L", "M", "R"), command1);
         assertEquals(asList("L", "M", "R", "L"), command2.getMoveList());
         assertEquals(asList("L", "L", "M", "R", "L"), command3.getMoveList());
         assertEquals(asList("L", "L", "M", "R", "L", "M"), command4.getMoveList());
