@@ -30,7 +30,7 @@ public class CommandDelegationTest {
         Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Rover movedRover = RIGHT.delegate(rover);
 
-        assertEquals(Orientation.EAST, movedRover.orientation);
+        assertEquals(Orientation.EAST, movedRover.getOrientation());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class CommandDelegationTest {
         Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Rover movedRover = LEFT.delegate(rover);
 
-        assertEquals(Orientation.WEST, movedRover.orientation);
+        assertEquals(Orientation.WEST, movedRover.getOrientation());
     }
 
     @Test
@@ -46,6 +46,6 @@ public class CommandDelegationTest {
         Rover rover = new Rover("a", Orientation.NORTH, new Position(1,1));
         Rover movedRover = MOVE.delegate(rover);
 
-        assertEquals(2, movedRover.position.getY());
+        assertEquals(2, movedRover.getPosition().getY());
     }
 }

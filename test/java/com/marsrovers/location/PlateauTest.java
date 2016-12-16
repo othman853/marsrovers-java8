@@ -17,8 +17,8 @@ public class PlateauTest {
 
         Plateau plateau = new Plateau(10, 10);
 
-        assertEquals(10, plateau.horizontalBoundary);
-        assertEquals(10, plateau.verticalBoundary);
+        assertEquals(10, plateau.getHorizontalBoundary());
+        assertEquals(10, plateau.getVerticalBoundary());
 
     }
 

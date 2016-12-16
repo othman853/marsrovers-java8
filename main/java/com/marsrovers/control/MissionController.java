@@ -21,7 +21,7 @@ public class MissionController {
     public void add(Rover rover) throws RoverManipulationException {
 
         if (plateau.isOccupied(rover)) {
-            throw new RoverManipulationException("There is already a rover ocuppying the position: " + rover.position.toString());
+            throw new RoverManipulationException("There is already a rover ocuppying the position: " + rover.getPosition().toString());
         }
 
         plateau.set(rover);

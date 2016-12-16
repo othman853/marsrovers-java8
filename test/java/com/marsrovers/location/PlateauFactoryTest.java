@@ -14,8 +14,8 @@ public class PlateauFactoryTest {
 
         Plateau plateau = factory.createDefaultPlateau();
 
-        assertEquals(10, plateau.horizontalBoundary);
-        assertEquals(10, plateau.verticalBoundary);
+        assertEquals(10, plateau.getHorizontalBoundary());
+        assertEquals(10, plateau.getVerticalBoundary());
 
     }
 }

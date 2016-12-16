@@ -30,7 +30,7 @@ public class CommandExecutorTest {
 
         Rover movedRover = executor.execute(rover, command);
 
-        assertEquals(Orientation.WEST, movedRover.orientation);
+        assertEquals(Orientation.WEST, movedRover.getOrientation());
 
     }
 
@@ -41,7 +41,7 @@ public class CommandExecutorTest {
 
         Rover movedRover = executor.execute(rover, command);
 
-        assertEquals(2, movedRover.position.getY());
+        assertEquals(2, movedRover.getPosition().getY());
 
     }
 
@@ -52,7 +52,7 @@ public class CommandExecutorTest {
 
         Rover movedRover = executor.execute(rover, command);
 
-        assertEquals(Orientation.EAST, movedRover.orientation);
+        assertEquals(Orientation.EAST, movedRover.getOrientation());
 
     }
 
@@ -63,7 +63,7 @@ public class CommandExecutorTest {
 
         Rover movedRover = executor.execute(rover, command);
 
-        assertEquals(0, movedRover.position.getY());
+        assertEquals(0, movedRover.getPosition().getY());
 
     }
 }

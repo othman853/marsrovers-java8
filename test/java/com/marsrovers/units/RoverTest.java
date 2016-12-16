@@ -17,7 +17,7 @@ public class RoverTest {
 
         Rover newRover = rover.left();
 
-        assertEquals(WEST, newRover.orientation);
+        assertEquals(WEST, newRover.getOrientation());
 
     }
 
@@ -26,7 +26,7 @@ public class RoverTest {
 
         Rover newRover = rover.right();
 
-        assertEquals(EAST, newRover.orientation);
+        assertEquals(EAST, newRover.getOrientation());
 
     }
 
@@ -35,7 +35,7 @@ public class RoverTest {
 
         Rover newRover = rover.move();
 
-        assertEquals(2, newRover.position.getY());
+        assertEquals(2, newRover.getPosition().getY());
 
     }
 
@@ -46,7 +46,7 @@ public class RoverTest {
 
         Rover newRover = rover.move();
 
-        assertEquals(0, newRover.position.getY());
+        assertEquals(0, newRover.getPosition().getY());
 
     }
 
@@ -54,7 +54,7 @@ public class RoverTest {
     public void toStringShouldBeCorrect() throws Exception {
         String asString = rover.toString();
 
-        assertEquals("a " + rover.position.toString() + " " + rover.orientation.toString(), asString);
+        assertEquals("a " + rover.getPosition().toString() + " " + rover.getOrientation().toString(), asString);
 
     }
 }
