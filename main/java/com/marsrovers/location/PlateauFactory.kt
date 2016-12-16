@@ -2,9 +2,7 @@ package com.marsrovers.location
 
 class PlateauFactory {
 
-    fun createDefaultPlateau(): Plateau {
-        return Plateau(DEFAULT_HORIZONTAL_SIZE, DEFAULT_VERTICAL_SIZE)
-    }
+    fun createDefaultPlateau(): Plateau = Plateau(DEFAULT_HORIZONTAL_SIZE, DEFAULT_VERTICAL_SIZE)
 
     companion object {
 
