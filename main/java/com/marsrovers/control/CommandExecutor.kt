@@ -4,7 +4,7 @@ package com.marsrovers.control
 import com.marsrovers.units.Rover
 import java.util.stream.Collectors
 
-class CommandExecutor {
+open class CommandExecutor {
 
     fun execute(rover: Rover, command: Command): Rover {
 

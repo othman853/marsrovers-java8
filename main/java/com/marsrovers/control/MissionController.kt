@@ -8,7 +8,7 @@ import com.marsrovers.units.Rover
 
 import java.util.Optional
 
-class MissionController(private val plateau: Plateau, private val executor: CommandExecutor) {
+open class MissionController(private val plateau: Plateau, private val executor: CommandExecutor) {
 
     @Throws(RoverManipulationException::class)
     fun add(rover: Rover) {

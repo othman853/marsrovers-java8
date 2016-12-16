@@ -5,7 +5,7 @@ import com.marsrovers.units.Rover
 import java.util.HashMap
 import java.util.Optional
 
-class Plateau internal constructor(val horizontalBoundary: Int, val verticalBoundary: Int) {
+open class Plateau internal constructor(val horizontalBoundary: Int, val verticalBoundary: Int) {
     internal val rovers: MutableMap<String, Rover> = HashMap()
 
     init {

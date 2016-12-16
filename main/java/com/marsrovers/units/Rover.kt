@@ -5,7 +5,7 @@ import com.marsrovers.location.Orientation
 import com.marsrovers.location.Position
 
 
-class Rover(val id: String, val orientation: Orientation, val position: Position) {
+open class Rover(val id: String, val orientation: Orientation, val position: Position) {
 
 
     fun left(): Rover = Rover(id, orientation.left(), position)
