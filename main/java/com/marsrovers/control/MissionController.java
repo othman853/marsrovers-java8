@@ -37,7 +37,7 @@ public class MissionController {
 
         Rover movedRover = executor.execute(rover.get(), command);
 
-        if ( (command.containsMove() && !plateau.isOccupied(movedRover)) || !command.containsMove()) {
+        if (!command.containsMove() || !plateau.isOccupied(movedRover)) {
             plateau.set(movedRover);
         }
 
