@@ -14,15 +14,15 @@ public class CommandDelegationTest {
     @Test
     public void fromStringShouldReturnProperCommand() throws Exception {
 
-        assertEquals(LEFT, fromString("L"));
-        assertEquals(RIGHT, fromString("R"));
-        assertEquals(MOVE, fromString("M"));
+        assertEquals(LEFT, Companion.fromString("L"));
+        assertEquals(RIGHT, Companion.fromString("R"));
+        assertEquals(MOVE, Companion.fromString("M"));
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenCommandIsNotFound() throws Exception {
-        fromString("Whatever");
+        Companion.fromString("Whatever");
     }
 
     @Test
